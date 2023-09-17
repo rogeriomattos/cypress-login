@@ -1,0 +1,16 @@
+tr {
+    font-size: 1rem;
+}
+
+tr:nth-child(even) {
+    background: #efefef;
+}
+
+td {
+    padding: .5rem;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+    border-spacing: 0;
+}

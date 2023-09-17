@@ -8,7 +8,7 @@ const DefaultLayout = () => {
   return (
     <ProtectedRoute>
       <NavBar />
-      <div>{outlet}</div>
+      <main>{outlet}</main>
     </ProtectedRoute>
   );
 };
