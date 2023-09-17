@@ -1,0 +1,24 @@
+nav ul, nav ul li{
+    list-style: none;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    background: #414141;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav li {
+    color: #fff;
+    padding: 1.25rem;
+}
+nav li {
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+nav li:last-child {
+    background: #179aa7;
+}
