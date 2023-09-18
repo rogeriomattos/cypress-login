@@ -9,6 +9,7 @@ import { User } from "../../services/users/type";
 const Home = () => {
   const [userList, setUserList] = useState(userListData);
   const [userToDelete, setUserToDelete] = useState<User | null>(null);
+  const [search, setSearch] = useState<string>("");
 
   const handleDelete = (user: User) => {
     setUserToDelete(user);
@@ -30,23 +31,35 @@ const Home = () => {
     trigerDialog();
   };
 
+  const searchFilter = (user: User) => {
+    return user.name.toLowerCase().includes(search.toLowerCase());
+  };
+
   return (
     <div>
       <h1>HOME</h1>
-      <Dialog buttonText="Novo Usuário">
-        <h2>Novo Usuário</h2>
-        <UserForm onSave={handleAdd} />
-      </Dialog>
-      <Dialog>
-        <div className="delete-message">
-          <p>Tem certeza que deseja deletar o usuário {userToDelete?.name}?</p>
-          <div>
-            <button onClick={trigerDialog}>Não</button>
-            <button onClick={deleteUser}>Sim</button>
+      <div className="actions">
+        <Dialog buttonText="Novo Usuário">
+          <h2>Novo Usuário</h2>
+          <UserForm onSave={handleAdd} />
+        </Dialog>
+        <Dialog>
+          <div className="delete-message">
+            <p>
+              Tem certeza que deseja deletar o usuário {userToDelete?.name}?
+            </p>
+            <div>
+              <button onClick={trigerDialog}>Não</button>
+              <button onClick={deleteUser}>Sim</button>
+            </div>
           </div>
-        </div>
-      </Dialog>
-
+        </Dialog>
+        <input
+          type="text"
+          placeholder="Buscar usuário"
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
       <table>
         <thead>
           <tr>
@@ -58,9 +71,16 @@ const Home = () => {
           </tr>
         </thead>
         <tbody>
-          {userList.map((item) => (
+          {userList.filter(searchFilter).map((item) => (
             <UserItem key={item.id} onDelete={handleDelete} {...item} />
           ))}
+          {userList.filter(searchFilter).length === 0 && (
+            <tr>
+              <td colSpan={5} align="center">
+                Nenhum resultado encontrado
+              </td>
+            </tr>
+          )}
         </tbody>
       </table>
     </div>

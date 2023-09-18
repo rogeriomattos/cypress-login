@@ -12,7 +12,7 @@ const UserItem = ({ onDelete, ...user }: Props) => {
       <td>{user.name}</td>
       <td>{user.email}</td>
       <td>{user.phone}</td>
-      <td>
+      <td align="center">
         <button onClick={() => onDelete(user)}>Deletar</button>
       </td>
     </tr>
