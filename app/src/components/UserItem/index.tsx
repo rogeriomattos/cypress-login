@@ -7,7 +7,7 @@ type Props = {
 
 const UserItem = ({ onDelete, ...user }: Props) => {
   return (
-    <tr>
+    <tr aria-label="usuario-item">
       <td>#{user.id}</td>
       <td>{user.name}</td>
       <td>{user.email}</td>
