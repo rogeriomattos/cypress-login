@@ -1,0 +1,10 @@
+button.close{
+    background: transparent;
+    color: #000;
+    border: none;
+    display: block;
+    margin: auto 0 auto auto;
+    padding: .25rem .5rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
