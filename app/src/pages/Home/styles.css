@@ -7,3 +7,16 @@ table {
 table thead{
     font-weight: 700;
 }
+
+.delete-message {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.delete-message>div {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    justify-content: right;
+}
+

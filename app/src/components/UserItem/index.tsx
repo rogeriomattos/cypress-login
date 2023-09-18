@@ -2,18 +2,18 @@ import { User } from "../../services/users/type";
 import "./styles.css";
 
 type Props = {
-  onDelete: (id: number) => void;
+  onDelete: (user: User) => void;
 } & User;
 
-const UserItem = ({ name, email, phone, id, onDelete }: Props) => {
+const UserItem = ({ onDelete, ...user }: Props) => {
   return (
     <tr>
-      <td>#{id}</td>
-      <td>{name}</td>
-      <td>{email}</td>
-      <td>{phone}</td>
+      <td>#{user.id}</td>
+      <td>{user.name}</td>
+      <td>{user.email}</td>
+      <td>{user.phone}</td>
       <td>
-        <button onClick={() => onDelete(id)}>Deletar</button>
+        <button onClick={() => onDelete(user)}>Deletar</button>
       </td>
     </tr>
   );

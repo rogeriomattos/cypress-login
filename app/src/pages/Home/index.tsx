@@ -4,12 +4,22 @@ import { userListData } from "../../services/users/data";
 import "./styles.css";
 import UserForm from "../../components/UserForm";
 import { Dialog, trigerDialog } from "../../components/Dialog";
+import { User } from "../../services/users/type";
 
 const Home = () => {
-  const dialogRef = useRef<HTMLDialogElement>(null);
   const [userList, setUserList] = useState(userListData);
-  const onDelete = (id: number) => {
-    console.log({ id });
+  const [userToDelete, setUserToDelete] = useState<User | null>(null);
+
+  const handleDelete = (user: User) => {
+    setUserToDelete(user);
+    trigerDialog();
+  };
+  const deleteUser = () => {
+    setUserList((oldState) =>
+      oldState.filter((item) => item.id !== userToDelete?.id)
+    );
+    trigerDialog();
+    setUserToDelete(null);
   };
 
   const handleAdd = (data: any) => {
@@ -27,6 +37,16 @@ const Home = () => {
         <h2>Novo Usuário</h2>
         <UserForm onSave={handleAdd} />
       </Dialog>
+      <Dialog>
+        <div className="delete-message">
+          <p>Tem certeza que deseja deletar o usuário {userToDelete?.name}?</p>
+          <div>
+            <button onClick={trigerDialog}>Não</button>
+            <button onClick={deleteUser}>Sim</button>
+          </div>
+        </div>
+      </Dialog>
+
       <table>
         <thead>
           <tr>
@@ -39,7 +59,7 @@ const Home = () => {
         </thead>
         <tbody>
           {userList.map((item) => (
-            <UserItem key={item.id} onDelete={onDelete} {...item} />
+            <UserItem key={item.id} onDelete={handleDelete} {...item} />
           ))}
         </tbody>
       </table>
