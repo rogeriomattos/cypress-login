@@ -17,7 +17,7 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="login" onSubmit={handleSubmit}>
       <h1>Bem-vindo ao gerenciador de usuários</h1>
       <input type="text" name="username" placeholder="User Name" />
       <input type="password" name="password" placeholder="Password" />
