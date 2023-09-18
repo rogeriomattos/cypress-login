@@ -28,6 +28,15 @@ const Home = () => {
         <UserForm onSave={handleAdd} />
       </Dialog>
       <table>
+        <thead>
+          <tr>
+            <td>#Id</td>
+            <td>Nome</td>
+            <td>E-mail</td>
+            <td>Phone</td>
+            <td></td>
+          </tr>
+        </thead>
         <tbody>
           {userList.map((item) => (
             <UserItem key={item.id} onDelete={onDelete} {...item} />
