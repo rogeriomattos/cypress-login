@@ -15,3 +15,27 @@ code {
 button {
   cursor: pointer;
 }
+
+dialog {
+  min-width: 500px;
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.457);
+}
+
+form input {
+  padding: 1rem;
+}
+
+button {
+  background: #179aa7;
+  color: #fff;
+  border: none;
+  padding: 1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+}
