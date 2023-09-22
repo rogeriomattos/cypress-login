@@ -13,13 +13,13 @@ const Home = () => {
 
   const handleDelete = (user: User) => {
     setUserToDelete(user);
-    trigerDialog();
+    trigerDialog("delete-user");
   };
   const deleteUser = () => {
     setUserList((oldState) =>
       oldState.filter((item) => item.id !== userToDelete?.id)
     );
-    trigerDialog();
+    trigerDialog("delete-user");
     setUserToDelete(null);
   };
 
@@ -28,7 +28,7 @@ const Home = () => {
       ...userList,
       { ...data, id: userList[userList.length - 1].id + 1 },
     ]);
-    trigerDialog();
+    trigerDialog("new-user");
   };
 
   const searchFilter = (user: User) => {
@@ -39,17 +39,17 @@ const Home = () => {
     <div>
       <h1>HOME</h1>
       <div className="actions">
-        <Dialog buttonText="Novo Usuário">
+        <Dialog id="new-user" buttonText="Novo Usuário">
           <h2>Novo Usuário</h2>
           <UserForm onSave={handleAdd} />
         </Dialog>
-        <Dialog>
+        <Dialog id="delete-user">
           <div className="delete-message">
             <p>
               Tem certeza que deseja deletar o usuário {userToDelete?.name}?
             </p>
             <div>
-              <button onClick={trigerDialog}>Não</button>
+              <button onClick={() => trigerDialog("delete-user")}>Não</button>
               <button onClick={deleteUser}>Sim</button>
             </div>
           </div>

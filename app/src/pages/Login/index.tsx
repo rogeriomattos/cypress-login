@@ -4,6 +4,7 @@ import "./styles.css";
 
 const Login = () => {
   const { user, login } = useAuth();
+
   if (user) {
     // user is not authenticated
     return <Navigate to="/" />;
@@ -11,9 +12,11 @@ const Login = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    login({
-      name: "Loid Ford",
-    });
+    setTimeout(() => {
+      login({
+        name: "Loid Ford",
+      });
+    }, 3000);
   };
 
   return (
