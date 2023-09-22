@@ -6,3 +6,7 @@ form.login {
     gap: 1rem;
     padding: 4rem 2rem 2rem;
 }
+
+.loading  {
+    opacity: 0.5;
+}

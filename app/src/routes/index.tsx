@@ -14,7 +14,7 @@ export const routers = createBrowserRouter(
   createRoutesFromElements(
     <Route element={<AuthLayout />}>
       <Route element={<DefaultLayout />}>
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
       </Route>
 
       <Route path="/login" element={<Login />} />

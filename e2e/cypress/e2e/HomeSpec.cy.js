@@ -2,17 +2,22 @@
 describe('HOME', () => {
   
   beforeEach(() => {
-    cy.visit('http://localhost:3000/')
-    cy.get('[name="username"]').type('rogerio.mattos');
-    cy.get('[name="password"]').type('123456');
-    cy.get('button').click();
+    const [username, password] = ['rogerio.mattos', '123456']
+    cy.session([username, password], () => {
+      cy.visit('http://localhost:3000/login')
+      cy.get('[name="username"]').type(username);
+      cy.get('[name="password"]').type(password);
+      cy.get('button').click();
+      cy.wait(4000);
+    });
+    cy.visit('http://localhost:3000/home');
   });
 
   it('Deve poder filtrar filtrar', () => {
-    cy.get('[placeholder="Buscar usuário"]').type('Monkey');
+    cy.get('[placeholder="Buscar Cliente"]').type('Monkey');
     cy.get('[aria-label="usuario-item"]').should('have.length', 1);
     cy.get('[aria-label="usuario-item"]').should('contain.text', 'Monkey');
-    cy.get('[placeholder="Buscar usuário"]').clear().type('a');
+    cy.get('[placeholder="Buscar Cliente"]').clear().type('a');
     cy.get('[aria-label="usuario-item"]').should('have.length.gt', 1);
   });
 

@@ -39,14 +39,14 @@ const Home = () => {
     <div>
       <h1>HOME</h1>
       <div className="actions">
-        <Dialog id="new-user" buttonText="Novo Usuário">
-          <h2>Novo Usuário</h2>
+        <Dialog id="new-user" buttonText="Novo Cliente">
+          <h2>Novo Cliente</h2>
           <UserForm onSave={handleAdd} />
         </Dialog>
         <Dialog id="delete-user">
           <div className="delete-message">
             <p>
-              Tem certeza que deseja deletar o usuário {userToDelete?.name}?
+              Tem certeza que deseja deletar o cliente {userToDelete?.name}?
             </p>
             <div>
               <button onClick={() => trigerDialog("delete-user")}>Não</button>
@@ -56,7 +56,7 @@ const Home = () => {
         </Dialog>
         <input
           type="text"
-          placeholder="Buscar usuário"
+          placeholder="Buscar Cliente"
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
